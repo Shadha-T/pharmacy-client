@@ -12,8 +12,7 @@ function Poster() {
       </div>
      
       <div className=''>
-        {/* <img src='https://cdn.imgbin.com/25/4/24/pill-pharmaceutical-drug-capsule-medicine-analgesic-x2f9cZQ5.jpg' className='rounded-full h-2/4 w-64'></img>
-         */}
+        
          <img src='https://img.freepik.com/free-vector/pharmacy-paper-bag-medicine_603843-3825.jpg?size=626&ext=jpg&ga=GA1.1.203772696.1695057119&semt=sph' className=' h-80 w-full ml-60 rounded-full mt-8'></img>
       </div>
       </div>

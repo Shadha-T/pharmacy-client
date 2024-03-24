@@ -1,6 +1,22 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 function Poster2() {
+
+
+    const [result,setResult]= useState([])
+    useEffect(()=>{
+        fetchdata()
+    },[])
+ const fetchdata = async()=>{
+    try {
+       const response = await axios.get('http://localhost:3000/api/banner') 
+       console.log(response,"rrr");
+       setResult(response.data.result)
+    } catch (error) {
+        
+    }
+ }
   return (
     <>
     <div className='h-96 flex justify-center gap-5 mt-5 '>

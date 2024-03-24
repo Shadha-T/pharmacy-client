@@ -21,6 +21,20 @@ import Aorders from './ADMIN/Admincomponent/components/Aorder/Aorders'
 import Apayment from './ADMIN/Admincomponent/components/Apayment/Apayment'
 import Acart from './ADMIN/Admincomponent/components/Acart/Acart'
 import Profile from './ADMIN/profile/Profile'
+import AdminProduct from "./ADMIN/AdminProduct/AdminProduct.jsx"
+import AdminAddProduct from "./ADMIN/AdminAddProduct/AdminAddProduct.jsx"
+import AdminEditProduct from "./ADMIN/AdminEditProduct/AdminEditProduct.jsx"
+import AdminBanner from './ADMIN/AdminBanner/AdminBanner.jsx'
+import AdminAddBanner from './ADMIN/AdminBanner/AdminAddBanner.jsx'
+import AdminBannerEdit from './ADMIN/AdminBanner/AdminBannerEdit.jsx'
+import AdminBlog from './ADMIN/AdminBlog/AdminBlog.jsx'
+import AdminBlogAdd from './ADMIN/AdminBlog/AdminBlogAdd.jsx'
+import AdminBlogEdit from './ADMIN/AdminBlog/AdminBlogEdit.jsx'
+import Details from './USER/details/Details.jsx'
+import AdminCategory from './ADMIN/AdminCategory/AdminCategory.jsx'
+import AdminAddCategory from './ADMIN/AdminCategory/AdminAddCategory.jsx'
+import AdminEditCategory from './ADMIN/AdminCategory/AdminEditCategory.jsx'
+
 
 
 
@@ -64,6 +78,10 @@ function App() {
         {
           path:"user-account",
           element:<Account/>
+        },
+        {
+          path:"user-details",
+          element:<Details/>
         }
 
  
@@ -87,7 +105,56 @@ function App() {
           path:"",
           element:<AdminHome/>
         },
-       
+        {
+          path:"product",
+          element:<AdminProduct/>
+        },
+        {
+          path:"edit-product/:id",
+          element:<AdminEditProduct/>
+        },
+        {
+          path:"add-product",
+          element:<AdminAddProduct/>
+        },
+        {
+          path:"admin-banner",
+          element:<AdminBanner/>
+        },
+       {
+        path:"add-banner",
+        element:<AdminAddBanner/>
+       },
+       {
+        path:"edit-banner/:id",
+        element:<AdminBannerEdit/>
+
+       },
+       {
+        path:"admin-blog",
+        element:<AdminBlog/>
+      },
+      {
+        path:"add-blog",
+        element:<AdminBlogAdd/>
+       },
+       {
+        path:"edit-blog/:id",
+        element:<AdminBlogEdit/>
+
+       },
+       {
+        path:"admin-category",
+        element:<AdminCategory/>
+       },
+       {
+        path:"add-category",
+        element:<AdminAddCategory/>
+       },
+       {
+        path:"edit-category/:id",
+        element:<AdminEditCategory/>
+       }
         
       ],
     },

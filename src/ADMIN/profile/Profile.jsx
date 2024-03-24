@@ -12,7 +12,7 @@ function Profile() {
         </div>
         <div className='ml-5'>
             <p className=''>name</p>
-            <p className=''>phone number</p>
+            <p className=''>email</p>
         </div>
         <div className='flex justify-center gap-3'>
           <button className='h-7 w-16 bg-slate-400 rounded-md'>Orders</button>

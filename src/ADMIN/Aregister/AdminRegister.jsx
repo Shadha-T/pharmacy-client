@@ -1,54 +1,28 @@
 import { useState } from "react";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 ;
 
-import InputField from "../Admincomponent/Forms/inputField/InputField";
+
 import { errorToast, successToast } from "../../USER/Toast/toast";
+import axios from "axios";
 
 
 
 function AdminRegister() {
-  const [formFiled, setFormField] = useState({});
 
-  const formdatas = [
-    {
-      type: "text",
-      placeholder: "firstname",
-      className: "",
-      name: "Firstname",
-    },
-    {
-      type: "text",
-      placeholder: "lastname",
-      className: "",
-      name: "lastname",
-    },
-    {
-      type: "email",
-      placeholder: "Enter your Email",
-      className: "",
-      name: "email",
-    },
-    {
-      type: "password",
-      placeholder: " Enter your Password",
-      className: "",
-      name: "password",
-    },
-   
-  ];
+const navigate = useNavigate()
+const [fname,setFname]= useState('')
+const [lname,setLname]= useState('')
+const [email,setEmail]= useState('')
 
-  const onChangeValues = (e) => {
-    console.log(e.target.value);
-    setFormField({ ...formFiled, [e.target.name]: e.target.value });
-  };
+const [password,setPassword]= useState('')
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-     const response =await  AdminRegister(formFiled)
-
+     const response =await  axios.post('http://localhost:3000/api/admin/register',{ fname:fname,lname:lname,email:email,password:password })
+navigate('/admin-login')
       successToast(response.data.message)
     } catch (error) {
       errorToast(error.response.data.message,'error')
@@ -64,17 +38,12 @@ function AdminRegister() {
         action=""
         className="w-1/3 rounded-md bg-red-400 h-[500px] flex justify-center flex-col gap-5 items-center "
       >
-        <h2 className="text-white text-xl">Sign Up</h2>
-        {formdatas.map(({ className, placeholder, type, name }, index) => (
-          <InputField
-            onChange={onChangeValues}
-            key={index}
-            type={type}
-            placeholder={placeholder}
-            name={name}
-            className={`${className} max-w-[300px] w-[80%] h-[40px] bg-white flex justify-start ps-5 rounded-md items-center`}
-          />
-        ))}
+          <input type="text" onChange={(e)=>setFname(e.target.value)} placeholder="firstName" className={`max-w-[300px] w-[80%] h-[40px] bg-white flex justify-start ps-5 rounded-md items-center`} />
+        <input type="text" onChange={(e)=>setLname(e.target.value)} placeholder="lastName" className={`max-w-[300px] w-[80%] h-[40px] bg-white flex justify-start ps-5 rounded-md items-center`} />
+        <input type="text" onChange={(e)=>setEmail(e.target.value)} placeholder="Email" className={`max-w-[300px] w-[80%] h-[40px] bg-white flex justify-start ps-5 rounded-md items-center`} />
+        <input type="text" onChange={(e)=>setPassword(e.target.value)} placeholder="Password" className={`max-w-[300px] w-[80%] h-[40px] bg-white flex justify-start ps-5 rounded-md items-center`} />
+        
+      
         <input
           type="submit"
           className="text-white border-solid border-2    border-cyan-600  bg-red-400 w-24 rounded-2xl"

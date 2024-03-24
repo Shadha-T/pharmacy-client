@@ -6,10 +6,18 @@ import Sidebar from './Sidebar'
 
 function AdminLayout() {
   return (
-    <div>
-<Navbar/>
-<Outlet/>
-<Sidebar/>
+    <div className=''>
+      <div className="">
+        <Navbar />
+        <div className="flex">
+
+        <Sidebar />
+        <div className="ms-5 mt-4">
+        <Outlet/>
+        </div>
+        </div>
+      </div>
+      
     </div>
   )
 }

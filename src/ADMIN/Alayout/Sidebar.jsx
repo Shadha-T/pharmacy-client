@@ -9,33 +9,33 @@ import { CgProfile } from "react-icons/cg";
 
 function Sidebar() {
  return (
-    <div className=" rounded-xl bg-cyan-400 w-[300px] h-screen ml-3">
+    <div className="  bg-cyan-400 w-[300px] h-fullscreen ">
       <ul className="mt-3 ">
         <div className="">
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 flex">
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 flex text-cyan-800">
           <NavLink to={""}> <FaHome />Home </NavLink>
         </li>
         </div>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
-          <NavLink to={""}> Product </NavLink>
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
+          <NavLink to={"/admin/product"}> Product </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
-          <NavLink to={"/admin-orders"}> <IoReorderFourSharp />Orders </NavLink>
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
+          <NavLink to={"/admin/admin-banner"}> <IoReorderFourSharp />Banner </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
-          <NavLink to={"/admin-cart"}><FaShoppingCart /> Cart </NavLink>
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
+          <NavLink to={"/admin/admin-blog"}><FaShoppingCart /> Blog </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
-          <NavLink to={"/admin-payment"}> <RiSecurePaymentLine />
-Payments </NavLink>
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
+          <NavLink to={"/admin/admin-categories"}> <RiSecurePaymentLine />Categories </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
           <NavLink to={""}><FaHouseUser /> Users </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
           <NavLink to={""}><CgProfile /> Profile </NavLink>
         </li>
-        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100">
+       
+        <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
           <NavLink  ><RiLogoutBoxLine /> Logout </NavLink>
         </li>
       </ul>

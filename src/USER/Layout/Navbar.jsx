@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <div>
-      <div className='flex  justify-between  mt-4 bg-red-400 h-12'>
+      <div className='flex  justify-between  mt-4 bg-red-400 h-12 '>
         <h1 className='font-extrabold  size-9 text-2xl flex  ml-2 items-center  text-cyan-700'>Pharmacy</h1>
 
         <form className="flex items-center max-w-sm mx-auto">   

@@ -13,8 +13,7 @@ function Poster3() {
       </div>
      
       <div className=''>
-        {/* <img src='https://cdn.imgbin.com/25/4/24/pill-pharmaceutical-drug-capsule-medicine-analgesic-x2f9cZQ5.jpg' className='rounded-full h-2/4 w-64'></img>
-         */}
+       
          <img src='https://clipart-library.com/images_k/medicine-transparent-background/medicine-transparent-background-7.png' className=' h-80 w-full ml-60 rounded-full mt-8'></img>
       </div>
       </div>

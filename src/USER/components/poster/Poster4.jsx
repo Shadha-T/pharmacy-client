@@ -3,10 +3,6 @@ import React from 'react'
 function Poster4() {
   return (
     <div className='flex justify-center mt-5 bg-slate-300'>
-{/*     
-<div className=''>
-    <h1 className=' flex justify-between text-3xl '>Our Latest News & Blogs</h1>
-</div> */}
 
 
 
