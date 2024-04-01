@@ -36,14 +36,14 @@ function Product3() {
   }
     ]
   return (
-    <div className='mt-5'>
-    <div className='ml-56'>
+    <div className='mt-5 flex flex-col items-center'>
+    <div className=' flex justify-between w-full max-w-screen-lg px-4 md:px-0'>
 <h1 className='text-4xl'>Top Products</h1>
-    </div>
-    <div className='mr-56'>
+   
+    {/* <div className='mr-56'> */}
     <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
-    </div>
-    <div className='flex justify-center gap-4'> 
+    {/* </div> */} </div>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-screen-lg px-4 md:px-0'> 
     {
      Product3.map((item)=>{
        return(

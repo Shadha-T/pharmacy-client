@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
+import axios from 'axios';
 
 function PopularProducts() {
- 
+  const [result,setResult]= useState([])
+  const [pdctlimit,setPdctlimit]= useState(4)
        const PopularProducts=[
         {
             id:"1",
@@ -33,34 +35,49 @@ function PopularProducts() {
       
   }
     ]
+    useEffect(()=>{
+      fetchdata()
+    },[])
+
+    const fetchdata = async()=>{
+      try {
+        const response= await axios.get('http://localhost:3000/api/product')
+        setResult(response.data.result)
+      } catch (error) {
+      
+      }
+    }
   return (
     
-    <div className='mt-5'>
-      <div className='ml-56'>
+    <div className='mt-5 flex flex-col items-center'>
+      <div className=' flex justify-between w-full max-w-screen-lg px-4 md:px-0'>
 <h1 className='text-4xl'>Popular Products</h1>
-      </div>
-      <div className='mr-56'>
-      <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
-      </div>
+   
+      {/* <div className='mr-56'> */}
+      <p className=' text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
+      {/* </div> */}   </div>
       <div className='flex justify-center gap-4'> 
     {
-     PopularProducts.map((item)=>{
+     result.map((item,index)=>{
        return(
          <>
+         {
+          index<pdctlimit&&
+        
       <Card sx={{ minWidth: 256 }} >
          <div className='flex flex-col border-2 bg-slate-200 ' >
        
-        <img src={item.imgSrc} className='h-72 w-56' ></img>
+        <img src={item.image} className='h-72 w-56' ></img>
         </div>
         <div className=''>
-        <p>{item.Product2_name}</p>
-        <p>{item.Product2_price}</p>
+        <p className='flex justify-center items-center'>{item.pdtname}</p>
+        <p className='flex justify-center items-center'>${item.cost}</p>
         </div>
         <div className=''>
         <button className='bg-cyan-600 rounded-md text-white h-8 w-64 '>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
     </Card>
-      
+     }
         </>
        )
      })

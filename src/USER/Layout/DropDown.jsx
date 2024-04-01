@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ToggleDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +7,8 @@ const ToggleDropdown = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const navigate = useNavigate()
 
   return (
     <div className="relative inline-block text-left">
@@ -72,12 +74,20 @@ const ToggleDropdown = () => {
             >
            Cart
             </Link>
-            <Link to={"user-register"}
+            <a
+            onClick={()=>{
+
+              localStorage.removeItem("token")
+              localStorage.removeItem("user")
+              navigate('/user-register')
+
+
+            }}
               className="block px-4 py-2 text-sm font-semibold text-red-400 hover:bg-cyan-600 hover:text-gray-900"
               role="menuitem"
             >
           Logout
-            </Link>
+            </a>
           </div>
         </div>
       )}

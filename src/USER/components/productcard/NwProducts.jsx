@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { errorToast } from '../../Toast/toast';
+import { errorToast, successToast } from '../../Toast/toast';
+import { Context } from '../../../App';
 
 
 
@@ -10,6 +11,8 @@ import { errorToast } from '../../Toast/toast';
 function NwProducts() {
   const [result,setResult]= useState([])
   const [pdctlimit,setPdctlimit]= useState(4)
+  const {carts,refresh,setRefresh}  = useContext(Context)
+
 
     const NwProducts=[
         {
@@ -43,6 +46,8 @@ function NwProducts() {
     ]
 
 
+
+
     useEffect(()=>{
       fetchdata()
     },[])
@@ -56,6 +61,19 @@ function NwProducts() {
       }
     }
 
+    const handleAddToCart = async (e) => {
+      try {
+        const response = await axios.post('http://localhost:3000/api/cart/addtoCart', { productId: e, userId: JSON.parse(localStorage.getItem("user"))?._id })
+  
+        console.log(response);
+        successToast("succesfully added to cart")
+        setRefresh(!refresh)
+      } catch (error) {
+        console.log(error);
+        errorToast(error.message || error.response.data.message, 'error')
+      }
+    }
+
 
 
   return (
@@ -65,7 +83,7 @@ function NwProducts() {
         <h1 className='text-4xl'>New Products</h1>
         </div>
         <div className='mr-56 '>
-        <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
+   <Link to={'/nw-products'}  ><p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p></Link>  
         </div>
      <div className='flex justify-center gap-4'>  
     {
@@ -80,14 +98,14 @@ function NwProducts() {
         <img src={item.image} className='h-72 w-56   '></img>
         </div>
         <div className=''>
-        <p>{item.pdtname}</p>
-        <p>{item.desc}</p>
-        <p>{item.price}</p>
-        <p>{item.cost}</p>
+        <p className='flex justify-center items-center'>{item.pdtname}</p>
+        {/* <p>{item.desc}</p> */}
+        {/* <p>{item.price}</p> */}
+        <p className='flex justify-center items-center'>${item.cost}</p>
 </div>
        
         <div className=''>
-        <button className='bg-cyan-600 rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        <button onClick={()=> handleAddToCart(item._id) } className='bg-cyan-600 rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
          
     </Card>

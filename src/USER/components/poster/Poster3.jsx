@@ -2,8 +2,8 @@ import React from 'react'
 
 function Poster3() {
   return (
-   
-       <div className='flex h-96 bg-cyan-400 text-white mt-5'>
+   <div className=' flex text-white mt-5 bg-cyan-400 flex-wrap'>
+      {/* //  <div className='flex h-96  text-white mt-5' style={{backgroundImage:"url('https://images.unsplash.com/photo-1549740425-5e9ed4d8cd34?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",backgroundAttachment:"fixed"}}> */}
       <div className='ml-14 mt-20'>
         <h1 className=''>Todays Hot Offer</h1>
         <h1 className='text-5xl font-mono text-red-400'>Unlock 50% on<br></br> Essential Medicines!</h1>
@@ -14,10 +14,10 @@ function Poster3() {
      
       <div className=''>
        
-         <img src='https://clipart-library.com/images_k/medicine-transparent-background/medicine-transparent-background-7.png' className=' h-80 w-full ml-60 rounded-full mt-8'></img>
+         <img src='https://clipart-library.com/images_k/medicine-transparent-background/medicine-transparent-background-7.png' className=' h-80 w-full ml-60 rounded-full mt-8 flex flex-wrap'></img>
       </div>
+      {/* </div> */}
       </div>
-    
   )
 }
 

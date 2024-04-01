@@ -1,41 +1,45 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Items() {
+
+  const [result,setResult] = useState([])
+
+  useEffect(()=>{
+    fetchdata()
+  },[])
+
+  const fetchdata = async()=>{
+    try {
+      const response = await axios.get('http://localhost:3000/api/category')
+      setResult(response.data.result)
+    } catch (error) {
+      
+    }
+  }
   return (
     <div>
-      <div className='flex bg-slate-100 gap-2 text-md justify-between mt-1 '>
-        <Link to={`/shop/${'pain-relief'}`}>
-          <p>Pain Relif</p>
+         <div className='flex bg-slate-200 gap-5 text-md justify-center mt-1  h-9 items-center'>
+      {
+        result.map((item)=>{
+          return(
+            <>
+           
+             <Link to={`/shop/${item._id}`} >
+          <p>{item.categoryname}</p>
         </Link>
-        <Link to={`/shop/${'cold and flu'}`}>
-          <p>Cold and Flu</p>
-        </Link>
-        <Link to={`/shop/${'Diabetes-care'}`}>
-          <p>Diabetes Care</p>
-        </Link>
-        <Link to={`/shop/${'digestive-health'}`}>
-          <p>Digestive Health</p>
-        </Link>
-        <Link to={`/shop/${'first-aid'}`}>
-          <p>First Aid</p>
-        </Link>
-        <Link to={`/shop/${'skin-care'}`}>
-          <p>Skin Care</p>
-        </Link>
-        <Link to={`/shop/${'child-baby'}`}>
-          <p>Child and Baby Care</p>
-        </Link>
-        <Link to={`/shop/${'heart-health'}`}>
-          <p>Heart Health</p>
-        </Link>
-        <Link to={`/shop/${'eye-ear'}`}>
-          <p>Eye and Ear Care</p>
-        </Link>
-        <Link to={`/shop/${'respiratory-health'}`}>
-          <p>Respiratory Health</p>
-        </Link>
+      
+            </>
+          )
+        })
+      }
+    
+       
+      
+      
       </div>
+
     </div>
   )
 }

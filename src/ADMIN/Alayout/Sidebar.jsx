@@ -20,10 +20,10 @@ function Sidebar() {
           <NavLink to={"/admin/product"}> Product </NavLink>
         </li>
         <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
-          <NavLink to={"/admin/admin-banner"}> <IoReorderFourSharp />Banner </NavLink>
+          <NavLink to={"/admin/banner"}> <IoReorderFourSharp />Banner </NavLink>
         </li>
         <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
-          <NavLink to={"/admin/admin-blog"}><FaShoppingCart /> Blog </NavLink>
+          <NavLink to={"/admin/blogg"}><FaShoppingCart /> Blog </NavLink>
         </li>
         <li className=" text-lg rounded-xl my-1 w-[90%] m-auto px-9 py-3 hover:bg-red-100 text-cyan-800">
           <NavLink to={"/admin/admin-categories"}> <RiSecurePaymentLine />Categories </NavLink>

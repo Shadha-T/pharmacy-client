@@ -1,6 +1,7 @@
 import { Card } from "@mui/material"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 
 
@@ -29,23 +30,19 @@ function NwProductsAll() {
 
 
   return (
-    <div className='mt-5'>
+   <> 
     
-        <div className=' ml-56'>
-        <h1 className='text-4xl'>New Products</h1>
-        </div>
-        <div className='mr-56 '>
-        <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
-        </div>
-     <div className='flex justify-center gap-4'>  
+       
+       
+     <div className='flex justify-center gap-4 flex-wrap'>  
     {
      result.map((item)=>{
        return(
          <>
         
       <Card sx={{ minWidth: 256 }} >
-      
-         <div className='flex flex-col border-2 bg-slate-200 ' >
+      <Link to={`/product/${item._id}`} state={item}>
+         <div className='flex flex-col border-2 bg-slate-200  ' >
        
         <img src={item.image} className='h-72 w-56   '></img>
         </div>
@@ -59,7 +56,7 @@ function NwProductsAll() {
         <div className=''>
         <button className='bg-cyan-600 rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
-         
+        </Link> 
     </Card>
      
         </>
@@ -67,7 +64,7 @@ function NwProductsAll() {
      })
     }
    </div>
-   </div>
+   </>
   )
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -34,16 +34,35 @@ import Details from './USER/details/Details.jsx'
 import AdminCategory from './ADMIN/AdminCategory/AdminCategory.jsx'
 import AdminAddCategory from './ADMIN/AdminCategory/AdminAddCategory.jsx'
 import AdminEditCategory from './ADMIN/AdminCategory/AdminEditCategory.jsx'
+import AdminBanner2 from './ADMIN/AdminBanner2/AdminBanner2.jsx'
+import AdminAddBanner2 from './ADMIN/AdminBanner2/AdminAddBanner2.jsx'
+import AdminEditBanner2 from './ADMIN/AdminBanner2/AdminEditBanner2.jsx'
+import NwProductsAll from './USER/viewproduct/NwProductsAll.jsx'
+
+import AddAdminCategory from './ADMIN/AdminCategory/AdminCategory.jsx'
+import Banner from './ADMIN/Banner/Banner.jsx'
+import AdminBlog2 from './ADMIN/Admin2Blog/AdminBlog2.jsx'
+import AdminBlog2Edit from './ADMIN/Admin2Blog/AdminBlog2Edit.jsx'
+import AdminBlog2Add from './ADMIN/Admin2Blog/AdminBlog2Add.jsx'
+import Blogg from './USER/blog/Blogg.jsx'
+import axios from 'axios'
 
 
 
 
 
 
+export const Context = React.createContext()
 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [refresh, setRefresh] = useState(true)
+
+
+
+  const [result, setResult] = useState([])
+
 
   const router= createBrowserRouter([
     {
@@ -80,8 +99,12 @@ function App() {
           element:<Account/>
         },
         {
-          path:"user-details",
+          path:"product/:userdetails",
           element:<Details/>
+        },
+        {
+          path:"nw-products",
+          element:<NwProductsAll/>
         }
 
  
@@ -96,7 +119,9 @@ function App() {
     path:"user-register",
     element:<UserRegister/>
   },
-
+ 
+  
+  
     {
       path:"/admin",
       element:<AdminLayout/>,
@@ -104,6 +129,10 @@ function App() {
         {
           path:"",
           element:<AdminHome/>
+        },
+        {
+          path:"admin-categories",
+          element:<AddAdminCategory/>
         },
         {
           path:"product",
@@ -131,6 +160,19 @@ function App() {
 
        },
        {
+        path:"admin-banner2",
+        element:<AdminBanner2/>
+      },
+      {
+        path:"add-banner2",
+        element:<AdminAddBanner2/>
+       },
+       {
+        path:"edit-banner2/:id",
+        element:<AdminEditBanner2/>
+
+       },
+       {
         path:"admin-blog",
         element:<AdminBlog/>
       },
@@ -144,6 +186,19 @@ function App() {
 
        },
        {
+        path:"add-blog2",
+        element:<AdminBlog2Add/>
+       },
+       {
+        path:"admin-blog2",
+        element:<AdminBlog2/>
+       },
+       {
+        path:"edit-blog2/:id",
+        element:<AdminBlog2Edit/>
+
+       },
+       {
         path:"admin-category",
         element:<AdminCategory/>
        },
@@ -154,6 +209,14 @@ function App() {
        {
         path:"edit-category/:id",
         element:<AdminEditCategory/>
+       },
+       {
+        path:"banner",
+        element:<Banner/>
+       },
+       {
+        path:"blogg",
+        element:<Blogg/>
        }
         
       ],
@@ -207,9 +270,27 @@ function App() {
      
   ])
 
+
+  const fetchdata = async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/api/cart/viewall')
+        setResult(response.data.result)
+    } catch (error) {
+
+    }
+}
+
+useEffect(() => {
+  fetchdata()
+}, [refresh])
+
+
   return (
     <>
+    <Context.Provider value={{carts:result,refresh,setRefresh}}>
+
     <RouterProvider router={router}/>
+    </Context.Provider>
     </>
   )
 }
