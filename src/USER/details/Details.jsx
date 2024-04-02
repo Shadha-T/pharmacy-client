@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FaHeart } from "react-icons/fa";
 import { useLocation, useParams } from 'react-router-dom';
 import { errorToast, successToast } from '../Toast/toast';
@@ -24,6 +24,8 @@ function Details() {
       errorToast(error.message || error.response.data.message, 'error')
     }
   }
+ 
+  
   return (
     <div>
       <div class="font-[sans-serif] bg-white">
@@ -39,7 +41,7 @@ function Details() {
               </div>
               <div class="mt-6 flex flex-wrap justify-center gap-6 mx-auto">
                 {
-                  item.images.map((item) => {
+                item.images.map((item) => {
 
                     return (
                       <>

@@ -38,7 +38,6 @@ import AdminBanner2 from './ADMIN/AdminBanner2/AdminBanner2.jsx'
 import AdminAddBanner2 from './ADMIN/AdminBanner2/AdminAddBanner2.jsx'
 import AdminEditBanner2 from './ADMIN/AdminBanner2/AdminEditBanner2.jsx'
 import NwProductsAll from './USER/viewproduct/NwProductsAll.jsx'
-
 import AddAdminCategory from './ADMIN/AdminCategory/AdminCategory.jsx'
 import Banner from './ADMIN/Banner/Banner.jsx'
 import AdminBlog2 from './ADMIN/Admin2Blog/AdminBlog2.jsx'
@@ -46,12 +45,6 @@ import AdminBlog2Edit from './ADMIN/Admin2Blog/AdminBlog2Edit.jsx'
 import AdminBlog2Add from './ADMIN/Admin2Blog/AdminBlog2Add.jsx'
 import Blogg from './USER/blog/Blogg.jsx'
 import axios from 'axios'
-
-
-
-
-
-
 export const Context = React.createContext()
 
 
@@ -280,14 +273,19 @@ function App() {
     }
 }
 
+
+
 useEffect(() => {
   fetchdata()
 }, [refresh])
 
 
+
   return (
     <>
-    <Context.Provider value={{carts:result,refresh,setRefresh}}>
+    <Context.Provider value={{carts:result,refresh,setRefresh }}>
+    
+
 
     <RouterProvider router={router}/>
     </Context.Provider>

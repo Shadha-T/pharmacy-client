@@ -38,28 +38,28 @@ function Product4() {
   return (
     <div className='mt-5'>
     <div className='ml-56'>
-<h1 className='text-4xl'>Medical Products</h1>
+<h1 className='text-4xl text-custom-plum-dark'>Medical Products</h1>
     </div>
     <div className='mr-56'>
-    <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
+    <p className='text-right text-xl text-custom-plum-dark'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
     </div>
-    <div className='flex justify-center gap-4'> 
+    <div className='flex justify-center gap-6'> 
        
     {
      Product4.map((item)=>{
        return(
          <>
-      <Card sx={{ minWidth: 256 }} >
-         <div className='flex flex-col border-2 bg-slate-200' >
+      <Card sx={{ minWidth: 100 }} >
+         <div className='flex flex-col border-2 bg-purple-100' >
        
-        <img src={item.imgSrc} className='h-72 w-56' ></img>
+        <img src={item.imgSrc} className='h-52 w-40' ></img>
         </div>
         <div className=''>
-        <p>{item.product4_name}</p>
-        <p>{item.product4_price}</p>
+        <p className='flex justify-center items-center'>{item.product4_name}</p>
+        <p className='flex justify-center items-center'>{item.product4_price}</p>
         </div>
         <div className=''>
-        <button className='bg-cyan-600 rounded-md  text-white h-8 w-64'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        <button className='bg-custom-plum-light rounded-md  text-white h-8 w-64'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
     </Card>
       

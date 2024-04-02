@@ -19,8 +19,8 @@ function Items() {
     }
   }
   return (
-    <div>
-         <div className='flex bg-slate-200 gap-5 text-md justify-center mt-1  h-9 items-center'>
+    <div >
+         <div className='flex bg-purple-100 gap-5 text-md justify-center mt-1  h-9 items-center'>
       {
         result.map((item)=>{
           return(

@@ -74,28 +74,44 @@ function NwProducts() {
       }
     }
 
+    const addToWishlist  = async (e) => {
+      try {
+        const response = await axios.post('http://localhost:3000/api/wishlist/addtoWishlist', { productId: e, userId: JSON.parse(localStorage.getItem("user"))?._id })
+  
+        console.log(response);
+        successToast("succesfully added to wishlist")
+        setRefresh(!refresh)
+      } catch (error) {
+        console.log(error);
+        errorToast(error.message || error.response.data.message, 'error')
+      }
+    }
+    
 
+   
 
   return (
     <div className='mt-5'>
     
         <div className=' ml-56'>
-        <h1 className='text-4xl'>New Products</h1>
+        <h1 className='text-4xl text-custom-plum-dark'>New Products</h1>
         </div>
         <div className='mr-56 '>
-   <Link to={'/nw-products'}  ><p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p></Link>  
+   <Link to={'/nw-products'}  ><p className='text-right text-xl text-custom-plum-dark'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p></Link>  
         </div>
-     <div className='flex justify-center gap-4'>  
+     <div className='flex justify-center gap-6'>  
     {
      result.map((item,index)=>{
        return(
          <>
          {index<pdctlimit &&
-      <Card sx={{ minWidth: 256 }} >
+      <Card sx={{ minWidth: 100 }} >
       
-         <div className='flex flex-col border-2 bg-slate-200 ' >
+         <div className='flex flex-col border-2 bg-purple-100  justify-center gap-4' >
+         <button onClick={()=> addToWishlist(item._id) } className='text-left flex mt-1 ml-1'><i class="fa-regular fa-heart"></i></button>
+
        
-        <img src={item.image} className='h-72 w-56   '></img>
+        <img src={item.image} className='h-52 w-40 flex justify-center items-center   '></img>
         </div>
         <div className=''>
         <p className='flex justify-center items-center'>{item.pdtname}</p>
@@ -105,7 +121,9 @@ function NwProducts() {
 </div>
        
         <div className=''>
-        <button onClick={()=> handleAddToCart(item._id) } className='bg-cyan-600 rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        <button onClick={()=> handleAddToCart(item._id) } className='bg-custom-plum-light  rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        
+
         </div>
          
     </Card>

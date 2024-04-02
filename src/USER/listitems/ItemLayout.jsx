@@ -29,7 +29,7 @@ function ItemLayout() {
   return (
     <div>
     
-    <div className='flex justify-center gap-4 '>  
+    <div className='flex justify-center gap-6 my-2'>  
     {
      products.map((item,index)=>{
        return(
@@ -37,19 +37,19 @@ function ItemLayout() {
        
       <Card sx={{ minWidth: 256 }} >
       
-         <div className='flex flex-col border-2 bg-slate-200 ' >
+         <div className='flex flex-col border-2 bg-purple-100 ' >
        
-        <img src={item.image} className='h-72 w-56   '></img>
+        <img src={item.image} className='h-52 w-64    '></img>
         </div>
         <div className=''>
-        <p>{item.pdtname}</p>
-        <p>{item.desc}</p>
-        <p>{item.price}</p>
-        <p>{item.cost}</p>
+        <p className='flex justify-center items-center'>{item.pdtname}</p>
+        {/* <p className='flex justify-center items-center'>{item.desc}</p> */}
+        <p className='flex justify-center items-center'>${item.price}</p>
+        {/* <p className='flex justify-center items-center'>delivery:${item.cost}</p> */}
 </div>
        
         <div className=''>
-        <button className='bg-cyan-600 rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        <button className='bg-custom-plum-light rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
          
     </Card>

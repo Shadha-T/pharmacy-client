@@ -26,12 +26,24 @@ function Cart() {
             console.log(error);
         }
     }
+    const handleRemoveQuantity = async(id)=>{
+        try {
+          const response = await axios.get(`http://localhost:3000/api/cart/remove-cart/${JSON.parse(localStorage.getItem("user"))._id}/${id}`)
+          // console.log(response.data,"ttt");
+          // setData(response.data.data);
+          // setData(response.data.data);
+          setRefresh(!refresh)
+      
+      } catch (error) {
+          console.log(error);
+      }
+      }
     let totalAmount = 0
     return (
         <div className=''>
-            <div className='flex gap-3 justify-center'>
+            <div className='flex gap-1 justify-center'>
                 <div className=''>
-                    <div className='bg-cyan-100 h-96 w-96 my-4 border-2 border-red-200'>
+                    <div className='bg-cyan-100 h-96 w-11/12 my-4 border-2 border-red-200'>
                         <div className='flex justify-center'>
                             <h1 className='text-4xl text-red-500 '>Your Bag</h1>
                         </div>
@@ -51,12 +63,13 @@ function Cart() {
                                                         <p className='flex items-center ml-3 rounded-sm'>{item.product.pdtname}</p>
                                                         <p className='flex items-center ml-3 rounded-sm'>{item.product.price * item.quantity}</p>
                                                     </div>
-                                                    <div className='bg-red-300 ml-3 flex items-center justify-center border-2 border-slate-400 rounded-md gap-3'>
+                                                    <div className='bg-red-300 ml-3 flex items-center justify-center border-2 border-slate-400 rounded-md gap-3 w-32'>
                                                         <button onClick={() => handleIncrementQuantity(item.productId)} className='font-bold'  >+</button>{item.quantity} <p />
                                                         <button onClick={() => handleDescrementQuantity(item.productId)} className={`font-bold ${item.quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer'} `}  >-</button> 
                                                         {/* disabled={item.quantity === 1} */}
 
                                                     </div>
+                                                    <button className='hover:underline' onClick={()=>handleRemoveQuantity(item.productId)}>delete</button>
                                                 </div>
                                             </Card>
 

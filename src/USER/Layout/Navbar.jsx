@@ -28,18 +28,18 @@ function Navbar() {
   }
   return (
     <div>
-      < div className='flex  flex-row justify-between   	bg-custom-gray-light h-14 '>
-      <h1 className='font-sans  size-9 text-2xl flex  ml-2 items-center mt-2 text-custom-brown-dark '>Pharmacy</h1>
+      < div className='flex  flex-row justify-between   	bg-custom-gray-dark h-14 items-center'>
+      <h1 className='font-sans  size-9 text-2xl flex  ml-2 items-center mt-2 text-custom-brown-dark mb-4 sm:mb-0'>Pharmacy</h1>
 
       <form className="flex items-center max-w-sm mx-auto">
 
-        <div className="relative w-full">
+        <div className="flex items-center mb-4 sm:mb-0">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 
           </div>
 
           <input type="text" id="simple-search" className="w-64 h-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block ps-10 p-2.5  dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search products... " onChange={(e) => {
+            placeholder="Search products...  " onChange={(e) => {
               setSearch(e.target.value)
               handleSubmitSearch(e.target.value)
             }} />

@@ -38,27 +38,27 @@ function Product3() {
   return (
     <div className='mt-5 flex flex-col items-center'>
     <div className=' flex justify-between w-full max-w-screen-lg px-4 md:px-0'>
-<h1 className='text-4xl'>Top Products</h1>
+<h1 className='text-4xl text-custom-plum-dark'>Top Products</h1>
    
     {/* <div className='mr-56'> */}
-    <p className='text-right text-xl'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
+    <p className='text-right text-xl text-custom-plum-dark'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
     {/* </div> */} </div>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-screen-lg px-4 md:px-0'> 
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-screen-lg px-4 md:px-0'> 
     {
      Product3.map((item)=>{
        return(
          <>
-      <Card sx={{ minWidth: 256 }} >
-         <div className='flex flex-col border-2 bg-slate-200' >
+      <Card sx={{ minWidth: 100 }} >
+         <div className='flex flex-col border-2 bg-purple-100' >
        
-        <img src={item.imgSrc} className='h-72 w-56' ></img>
+        <img src={item.imgSrc} className='h-52 w-40' ></img>
         </div>
         <div className=''>
-        <p>{item.product3_name}</p>
-        <p>{item.product3_price}</p>
+        <p className='flex justify-center items-center'>{item.product3_name}</p>
+        <p className='flex justify-center items-center'>{item.product3_price}</p>
         </div>
         <div className=''>
-        <button className='bg-cyan-600 rounded-md text-white h-8 w-64 '>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        <button className='bg-custom-plum-light rounded-md text-white h-8 w-64 '>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
         </div>
     </Card>
       

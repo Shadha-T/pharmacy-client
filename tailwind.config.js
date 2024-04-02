@@ -12,7 +12,13 @@ export default {
         'custom-brown-light': '#B85902',
         'custom-brown-dark': '#8C5D33',
         'custom-brown-light': '#B85902',
-        'custom-white-light': '#F4E9E1',
+        'custom-white-light': '#F4E9E1',	
+        'custom-plum-light': '#9D5783',
+        'custom-plum-dark': '#560737',
+        'custom-purple-dark': '#c18eda',
+
+
+
 
 
       },
