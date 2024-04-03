@@ -16,6 +16,7 @@ function Wishlist() {
     
     }
   }
+  
 
   
     useEffect(()=>{
@@ -58,7 +59,7 @@ function Wishlist() {
               return(
                 <>
                 <Card className='mt-4'>
-                  <div className='flex justify-center h-96 w-80 bg-cyan-200 my-3 items-center mx-6 rounded-md'>
+                  <div className='flex justify-center h-96 w-80 bg-custom-plum-light my-3 items-center mx-6 rounded-md'>
                   <div className=''>
                     <div className='bg-slate-300 w-32 h-36 rounded-md mt-2'>
                     <img src={item.product.image} className='h-28 w-20 flex justify-center items-center'/>
@@ -69,21 +70,21 @@ function Wishlist() {
                   </div>
                  <div className='flex gap-2'>
                  
-                  <div className='flex text-cyan-700 h-8 w-24 items-center justify-center rounded-md  bg-red-200 mt-2 hover:bg-red-400 border-3 border-cyan-400'>
+                  <div className='flex text-cyan-700 h-8 w-36 items-center justify-center rounded-md  bg-red-200 mt-2 hover:bg-red-400 border-3 border-cyan-400 '>
                 
                 <Link to={'/user-cart'}><button className=''>Add to cart</button></Link>   
-                <button className='hover:underline' onClick={()=>handleRemoveQuantity(item.productId)}>delete</button>
+                <button className='hover:underline' onClick={()=>handleRemoveQuantity(item.productId)}><i class="fa-solid fa-trash"></i></button>
                    
                   </div>
-                  <div className='flex text-cyan-700 h-8 w-24 items-center justify-center rounded-md  bg-red-200 mt-2 hover:bg-red-400 border-3 border-cyan-400'>
+                  {/* <div className='flex text-cyan-700 h-8 w-24 items-center justify-center rounded-md  bg-red-200 mt-2 hover:bg-red-400 border-3 border-cyan-400'> */}
                 
                 {/* <button className=''>Buy now</button> */}
-                <button type='button' onClick={()=>{
+                {/* <button type='button' onClick={()=>{
                   addToWishlist(item._id)
-                }} className=''>Buy now</button>
+                }} className=''>Buy now</button> */}
                 {/* <button className=''>remove</button> */}
                
-              </div>
+              {/* </div> */}
               </div>
                   </div>
                   </div>

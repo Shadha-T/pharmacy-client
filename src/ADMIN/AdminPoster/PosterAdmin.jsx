@@ -1,12 +1,14 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { errorToast, successToast } from '../../USER/Toast/toast'
+ 
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { errorToast, successToast } from "../../USER/Toast/toast"
+import { Link } from "react-router-dom"
 
-function AdminProduct() {
+
+function PosterAdmin() {
 
 
-    const [products,setProducts] = useState([])
+    const [posters,setPosters] = useState([])
   
     useEffect(()=>{
         fetchdata()
@@ -14,9 +16,9 @@ function AdminProduct() {
 
     const fetchdata = async()=>{
         try {
-            const response = await axios.get('http://localhost:3000/api/product')
+            const response = await axios.get('http://localhost:3000/api/poster')
        
-      setProducts(response.data.result)
+      setPosters(response.data.result)
       
            } catch (error) {
              errorToast(error.response.data.message,'error')
@@ -26,7 +28,7 @@ function AdminProduct() {
 
     const handleDelete =async (id)=>{
         try {
-            const response = await axios.delete(`http://localhost:3000/api/product/${id}`)
+            const response = await axios.delete(`http://localhost:3000/api/poster/${id}`)
             successToast(response.data.message)
         } catch (error) {
             errorToast(error.message)
@@ -35,7 +37,7 @@ function AdminProduct() {
 
     const handleEdit=async(id)=>{
         try {
-            const response= await axios.put(`http://localhost:3000/api/product/${id}`)
+            const response= await axios.put(`http://localhost:3000/api/poster/${id}`)
             successToast(response.data.message)
         } catch (error) {
            errorToast(error.message) 
@@ -46,7 +48,7 @@ function AdminProduct() {
 
     return (
         <div>
-            <Link to={'/admin/add-product'} className='hover:underline h-7 w-44 bg-slate-300 text-center flex justify-center items-center rounded-md text-red-600  border-red-400'>Add Product</Link>
+            <Link to={'/admin/add-poster'} className='hover:underline h-7 w-44 bg-slate-300 text-center flex justify-center items-center rounded-md text-red-600  border-red-400'>Add Poster</Link>
           
 
            
@@ -56,23 +58,23 @@ function AdminProduct() {
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr className='bg-cyan-200'>
-                        <th scope="col" class="px-6 py-3">
-                           image
+                        <th scope="col" class="px-6 py-3 ">
+                            image
                             </th>
                             <th scope="col" class="px-6 py-3">
-                           images
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Product name
+                              title
                             </th>
                             <th scope="col" class="px-6 py-3">
                               Description
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                price
+                           percentage
                             </th>
                             <th scope="col" class="px-6 py-3">
-                               delivery cost
+                              price
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                              offerprice
                             </th>
                             <th scope="col" class="px-6 py-3">
                             Delete
@@ -83,43 +85,35 @@ function AdminProduct() {
                         </tr>
                     </thead>
                     <tbody>
-                       { products.map((item)=>{
+                       { posters.map((item)=>{
                         return(
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                 <td class="px-6 py-4">
-                              <img src={item.image} className='h-9 w-9'/>
-                            </td>
-                            <td class="px-6 py-4">
-                              {
-                                item?.images.map((image)=>{
-                                    return(
-                                        <>
-                                        <img src={image.images} className='w-[50px] h-[50px] sm:w-[70px] sm:h-[70px]'/>
-                                        </>
-                                    )
-                                })
-                              }
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
+                                             <td class="px-6 py-4">
+                              <img src={item.bannerimage} className="h-9 w-9"/>
                             </td>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {item.pdtname}
+                                {item.title}
                             </th>
                             <td class="px-6 py-4">
-                              {item.desc}
+                              {item.description}
                             </td>
                             <td class="px-6 py-4">
                             {item.price}
                             </td>
                             <td class="px-6 py-4">
-                             {item.cost}
+                             {item.percentage}
                             </td>
-                            <td onClick={()=>handleDelete(item._id)} class="px-6 py-4">
+                            <td class="px-6 py-4">
+                             {item.offerprice}
+                            </td>
+                            <td onClick={()=>handleDelete(item._id)} class="px-6 py-4  cursor-pointer ">
                                delete
                             </td>
-                            <td  class="px-6 py-4">
-                            <Link to={`/admin/edit-product/${item._id}`} state={ item} className='bg-red-400 py-2 px-4 rounded-md text-center text-white'>
-                          
+                            <td  className="px-6 py-4" >
+                            <Link to={`/admin/edit-poster/${item._id}`} state={item} className="bg-red-400 py-2 px-4 rounded-md text-center text-white" >
+                            
                                edit
-                          </Link>  </td>
+                           </Link> </td>
                         </tr>
                         
                         
@@ -132,9 +126,10 @@ function AdminProduct() {
                 </table>
             </div>
 
-            {/*  */}
+        
         </div>
     )
 }
 
-export default AdminProduct
+export default PosterAdmin
+

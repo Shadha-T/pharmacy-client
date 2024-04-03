@@ -24,14 +24,14 @@ console.log(response,"jjjjjjj");
   return (
     <div>
       <div>
-        <div className='sm:flex justify-between bg-red-400 sm:h-12 px-4 sm:px-6 '>
-          <h1 className='font-extrabold text-2xl flex items-center text-cyan-700'>Pharmacy</h1>
-          <div className='flex items-center gap-4'>
+        <div className='sm:flex justify-between bg-custom-gray-dark h-14 items-center'>
+          <h1 className='font-sans  size-9 text-2xl flex  ml-2 items-center mt-2 text-custom-brown-dark mb-4 sm:mb-0'>Pharmacy</h1>
+          <div className='flex items-center gap-3 justify-around '>
             {
-              (localStorage.getItem("token")&& localStorage.getItem("admin"))?
+              (localStorage.getItem("token")&& localStorage.getItem("admin")) ?
             
     <>
-   <Link to={"admin-account"} ><Avatar alt="Remy Sharp" src="" className='hidden md:block' />{JSON.parse(localStorage.getItem("admin")).fname+' ' +JSON.parse(localStorage.getItem("admin")).lname}</Link>
+   <Link to={"admin-account"} >{JSON.parse(localStorage.getItem("admin")).fname+' ' +JSON.parse(localStorage.getItem("admin")).lname}</Link><Avatar alt="Remy Sharp" src="" className='hidden md:block' />
 
     </>
     :"login/signup"

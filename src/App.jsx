@@ -45,6 +45,13 @@ import AdminBlog2Edit from './ADMIN/Admin2Blog/AdminBlog2Edit.jsx'
 import AdminBlog2Add from './ADMIN/Admin2Blog/AdminBlog2Add.jsx'
 import Blogg from './USER/blog/Blogg.jsx'
 import axios from 'axios'
+import PopularProductsAll from './USER/viewproduct/PopularProductsAll.jsx'
+import PosterAdmin from './ADMIN/AdminPoster/PosterAdmin.jsx'
+import PosterAdd from './ADMIN/AdminPoster/PosterAdd.jsx'
+import PosterEdit from './ADMIN/AdminPoster/PosterEdit.jsx'
+import StartShoping from './USER/components/shop/StartShoping.jsx'
+import TpProductAll from './USER/viewproduct/TpProductAll.jsx'
+import MedProductsAll from './USER/viewproduct/MedProductsAll.jsx'
 export const Context = React.createContext()
 
 
@@ -98,7 +105,23 @@ function App() {
         {
           path:"nw-products",
           element:<NwProductsAll/>
-        }
+        },
+        {
+          path:"popular-products",
+          element:<PopularProductsAll/>
+        },
+        {
+          path:"start-shoping",
+          element:<StartShoping/>
+        },
+        {
+          path:"top-products",
+          element:<TpProductAll/>
+        },
+        {
+          path:"med-products",
+          element:<MedProductsAll/>
+        },
 
  
       ]
@@ -210,7 +233,20 @@ function App() {
        {
         path:"blogg",
         element:<Blogg/>
-       }
+       },
+       {
+        path:"admin-poster",
+        element:<PosterAdmin/>
+      },
+     {
+      path:"add-poster",
+      element:<PosterAdd/>
+     },
+     {
+      path:"edit-poster/:id",
+      element:<PosterEdit/>
+
+     },
         
       ],
     },

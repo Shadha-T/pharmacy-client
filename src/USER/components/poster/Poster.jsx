@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Poster() {
   return (
@@ -8,7 +9,7 @@ function Poster() {
         <h1 className='text-5xl font-mono '>Your Prescription for<br></br> Affordable Health<br></br> Solutions!</h1>
         <p>Elevate your health journey with exclusive discounts and unparalleled<br></br>
          convenience.Your path to well-being starts here,where every purchase<br></br> is a prescription for savings</p>
-        <button className='bg-custom-gray-dark  flex gap-3  h-8 justify-start items-center border-2 border-custom-gray-dark rounded-full py-2 px-4 mt-3 hover:bg-custom-gray-dark'>Start Shopping<i class="fa-solid fa-bag-shopping"></i></button>
+    <Link to={'/start-shoping'}>  <button  type="button" className='bg-custom-gray-dark  flex gap-3  h-8 justify-start items-center border-2 border-custom-gray-dark rounded-full py-2 px-4 mt-3 hover:bg-custom-gray-dark'>Start Shopping<i class="fa-solid fa-bag-shopping"></i></button></Link>   
       </div>
      
       <div className=''>

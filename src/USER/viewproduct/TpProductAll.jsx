@@ -1,3 +1,4 @@
+
 import { Card } from "@mui/material"
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -7,7 +8,7 @@ import { Link } from "react-router-dom"
 
 
 
-function NwProductsAll() {
+function TpProductAll() {
   const [result,setResult]= useState([])
 
 
@@ -69,5 +70,7 @@ function NwProductsAll() {
   )
 }
 
-export default NwProductsAll
+export default TpProductAll
+
+
 

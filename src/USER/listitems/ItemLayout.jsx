@@ -2,17 +2,18 @@ import { Card } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { errorToast, successToast } from '../Toast/toast'
 
 function ItemLayout() {
     const {page} = useParams()
-
+const [refresh,setRefresh]=useState(true)
     const [products,setProducts] = useState([])
 
 
 
     useEffect(()=>{
       fetchdata()
-  },[])
+  },[refresh])
 
 
   const fetchdata = async()=>{
@@ -24,6 +25,19 @@ function ItemLayout() {
        } catch (error) {
          errorToast(error.response.data.message,'error')
        }
+}
+
+const handleAddToCart = async (e) => {
+  try {
+    const response = await axios.post('http://localhost:3000/api/cart/addtoCart', { productId: e, userId: JSON.parse(localStorage.getItem("user"))?._id })
+
+    console.log(response);
+    successToast("succesfully added to cart")
+    setRefresh(!refresh)
+  } catch (error) {
+    console.log(error);
+    errorToast(error.message || error.response.data.message, 'error')
+  }
 }
 
   return (
@@ -49,7 +63,10 @@ function ItemLayout() {
 </div>
        
         <div className=''>
-        <button className='bg-custom-plum-light rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        {/* <button className='bg-custom-plum-light rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+         */}
+        <button onClick={()=> handleAddToCart(item._id) } className='bg-custom-plum-light  rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+
         </div>
          
     </Card>

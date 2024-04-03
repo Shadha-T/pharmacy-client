@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import axios from 'axios';
+import { errorToast, successToast } from '../../Toast/toast';
+import { Link } from 'react-router-dom';
 
 function PopularProducts() {
   const [result,setResult]= useState([])
+const [refresh,setRefresh]=useState(true)
+
   const [pdctlimit,setPdctlimit]= useState(4)
        const PopularProducts=[
         {
@@ -37,7 +41,7 @@ function PopularProducts() {
     ]
     useEffect(()=>{
       fetchdata()
-    },[])
+    },[refresh])
 
     const fetchdata = async()=>{
       try {
@@ -47,6 +51,36 @@ function PopularProducts() {
       
       }
     }
+
+    const handleAddToCart = async (e) => {
+      try {
+        const response = await axios.post('http://localhost:3000/api/cart/addtoCart', { productId: e, userId: JSON.parse(localStorage.getItem("user"))?._id })
+    
+        console.log(response);
+        successToast("succesfully added to cart")
+        setRefresh(!refresh)
+      } catch (error) {
+        console.log(error);
+        errorToast(error.message || error.response.data.message, 'error')
+      }
+    }
+
+
+
+    const addToWishlist  = async (e) => {
+      try {
+        const response = await axios.post('http://localhost:3000/api/wishlist/addtoWishlist', { productId: e, userId: JSON.parse(localStorage.getItem("user"))?._id })
+  
+        console.log(response);
+        successToast("succesfully added to wishlist")
+        setRefresh(!refresh)
+      } catch (error) {
+        console.log(error);
+        errorToast(error.message || error.response.data.message, 'error')
+      }
+    }
+
+    
   return (
     
     <div className='mt-5 flex flex-col items-center'>
@@ -54,7 +88,7 @@ function PopularProducts() {
 <h1 className='text-4xl text-custom-plum-dark'>Popular Products</h1>
    
       {/* <div className='mr-56'> */}
-      <p className=' text-xl text-custom-plum-dark'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p>
+      <Link to={'/popular-products'}  > <p className=' text-xl text-custom-plum-dark'>View All<i className="fa-solid fa-arrow-right text-2xl"></i></p></Link>
       {/* </div> */}   </div>
       <div className='flex justify-center gap-6 '> 
     {
@@ -66,6 +100,7 @@ function PopularProducts() {
         
       <Card sx={{ minWidth: 100 }} >
          <div className='flex flex-col border-2 bg-purple-100 ' >
+         <button onClick={()=> addToWishlist(item._id) } className='text-left flex mt-1 ml-1'><i class="fa-regular fa-heart"></i></button>
        
         <img src={item.image} className='h-52 w-40 ' ></img>
         </div>
@@ -74,7 +109,9 @@ function PopularProducts() {
         <p className='flex justify-center items-center'>${item.cost}</p>
         </div>
         <div className=''>
-        <button className='bg-custom-plum-light rounded-md text-white h-8 w-64 '>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+        {/* <button className='bg-custom-plum-light rounded-md text-white h-8 w-64 '>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button> */}
+        <button onClick={()=> handleAddToCart(item._id) } className='bg-custom-plum-light  rounded-md h-8 w-64  text-white'>Add bag<i class="fa-solid fa-bag-shopping ml-2"></i></button>
+
         </div>
     </Card>
      }

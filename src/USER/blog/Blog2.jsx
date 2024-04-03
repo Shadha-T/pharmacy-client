@@ -25,18 +25,19 @@ function Blog2() {
 <div className='  '>
     <div className='flex'>
     {/* <div className=''> */}
-    <img src='https://cdn.create.vista.com/api/media/small/25496823/stock-photo-colorful-tablets-with-capsules-and-pills-on-blue-background' className='w-44 h-48 mt-3 rounded-xl'></img>
+    <img src={item.blog2image} className='w-32 h-40 mt-3 rounded-xl'></img>
     {/* </div> */}
        <div className=''>
-        <div className='flex gap-3 ml-4'>
-            <p className='bg-slate-200 text-rose-500 rounded-md w-16 flex items-center justify-around '>Doctor</p>
+        <div className='flex gap-3 ml-4 mt-3'>
+            <p className='bg-slate-200 text-custom-plum-light rounded-md w-16 flex items-center justify-around '>Doctor</p>
             <p>24 March,2024 </p>
         </div>
         <div className=''>
         <p className='ml-3 text-2xl font-semibold'>{item.title}</p>
-        <p className='ml-3 text-sm'>{item.description}
+        <p className='ml-3 text-2xl font-semibold'>{item.description}
 </p>
-        <button className='bg-rose-400 h-7 w-44 ml-2 text-white rounded-xl mt-3'>Read more</button>
+<p className='text-sm ml-4'>From nutrition advice to exercise routines,we are <br></br>here to support your journey toward a healthier</p>
+        <button className='bg-custom-plum-light h-7 w-32 ml-2 text-white rounded-lg mt-2'>Read more</button>
         </div>
    
 

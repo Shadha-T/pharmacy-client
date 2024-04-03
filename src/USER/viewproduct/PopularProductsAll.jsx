@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 
 
-function NwProductsAll() {
+function PopularProductsAll() {
   const [result,setResult]= useState([])
 
 
@@ -69,5 +69,6 @@ function NwProductsAll() {
   )
 }
 
-export default NwProductsAll
+export default PopularProductsAll
+
 

@@ -16,6 +16,9 @@ export default {
         'custom-plum-light': '#9D5783',
         'custom-plum-dark': '#560737',
         'custom-purple-dark': '#c18eda',
+        'custom-redpurple-dark': '#db93ac',
+
+
 
 
 

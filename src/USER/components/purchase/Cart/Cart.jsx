@@ -43,9 +43,9 @@ function Cart() {
         <div className=''>
             <div className='flex gap-1 justify-center'>
                 <div className=''>
-                    <div className='bg-cyan-100 h-96 w-11/12 my-4 border-2 border-red-200'>
+                    <div className='bg-custom-plum-light h-full w-11/12 my-4 border-2  mb-5'>
                         <div className='flex justify-center'>
-                            <h1 className='text-4xl text-red-500 '>Your Bag</h1>
+                            <h1 className='text-4xl text-custom-plum-dark'>Your Cart</h1>
                         </div>
                         <div className='grid grid-cols-3 overflow-scroll gap-4 ml-3 items-center justify-center'>
                             {
@@ -56,20 +56,21 @@ function Cart() {
                                         <>
                                             <Card className='mt-4 '>
                                                 <div className=''>
-                                                    <div className='bg-slate-300 w-32 h-36 rounded-md '>
+                                                    <div className='bg-purple-100 w-32 h-36 rounded-md '>
                                                         <img src={item.product.image} className='h-28 w-20 flex justify-center items-center ' />
                                                     </div>
                                                     <div className=''>
                                                         <p className='flex items-center ml-3 rounded-sm'>{item.product.pdtname}</p>
                                                         <p className='flex items-center ml-3 rounded-sm'>{item.product.price * item.quantity}</p>
                                                     </div>
-                                                    <div className='bg-red-300 ml-3 flex items-center justify-center border-2 border-slate-400 rounded-md gap-3 w-32'>
+                                                    <div className='bg-custom-gray-dark ml-3 flex items-center justify-center  rounded-md gap-3 w-32'>
+                                                <button className='hover:underline' onClick={()=>handleRemoveQuantity(item.productId)}><i class="fa-solid fa-trash"></i></button>
+
                                                         <button onClick={() => handleIncrementQuantity(item.productId)} className='font-bold'  >+</button>{item.quantity} <p />
                                                         <button onClick={() => handleDescrementQuantity(item.productId)} className={`font-bold ${item.quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer'} `}  >-</button> 
                                                         {/* disabled={item.quantity === 1} */}
 
                                                     </div>
-                                                    <button className='hover:underline' onClick={()=>handleRemoveQuantity(item.productId)}>delete</button>
                                                 </div>
                                             </Card>
 
@@ -82,9 +83,9 @@ function Cart() {
                         </div>
                     </div>
                 </div>
-                <div className='bg-red-100 h-96 w-96  my-4 border-2 border-cyan-100  '>
+                <div className='bg-custom-redpurple-dark h-96 w-96  my-4 border-2   '>
                     <div className='flex justify-center'>
-                        <h1 className='text-4xl text-cyan-800'>Order Summary</h1>
+                        <h1 className='text-4xl text-custom-plum-dark'>Order Summary</h1>
                     </div>
                     <div className='ml-5'>
                         <div className='my-4 '>
@@ -109,7 +110,7 @@ function Cart() {
                     </div>
                     <div className='mt-5 flex justify-around'>
                         <p className=''>Grand total</p>
-                        <Link to={'/user-orders'} ><button className='text-xl bg-cyan-400 w-28 h-10 flex items-center justify-center rounded-md text-red-400 hover:bg-cyan-800'>PlaceOrder</button></Link>
+                        <Link to={'/user-orders'} ><button className='text-xl bg-custom-plum-light w-28 h-10 flex items-center justify-center rounded-md text-custom-plum-dark hover:bg-cyan-800'>PlaceOrder</button></Link>
                     </div>
                 </div>
             </div>
